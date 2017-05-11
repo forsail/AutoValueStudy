@@ -14,7 +14,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        User user = User.newInstance(11, "asher");
+        User user = User.create(11, "asher");
 
         String json = new Gson().toJson(user);
         Log.d(TAG, "onCreate: " + json);

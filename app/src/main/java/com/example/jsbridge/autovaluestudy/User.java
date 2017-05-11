@@ -13,8 +13,24 @@ public abstract class User {
 
     public abstract String name();
 
-    public static User newInstance(int id, String name) {
-        return new AutoValue_User(id, name);
+    public static User create(int id, String name) {
+        return builder()
+                .id(id)
+                .name(name)
+                .build();
+    }
+
+    private static Builder builder() {
+        return new AutoValue_User.Builder();
+    }
+
+    @AutoValue.Builder
+    abstract static class Builder {
+        public abstract Builder id(int id);
+
+        public abstract Builder name(String name);
+
+        public abstract User build();
     }
 
     public static TypeAdapter<User> typeAdapter(Gson gson) {
